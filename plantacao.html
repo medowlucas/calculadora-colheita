@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Análise de Preço por Unidade - Melhores Culturas</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h2 class="my-4">Análise de Preço por Unidade - Melhores Culturas</h2>
+    <div class="table-responsive">
+      <table id="cultivos" class="table table-striped">
+        <thead>
+          <tr>
+            <th>Cultivo</th>
+            <th>XP</th>
+            <th>Unidades</th>
+            <th>Custo ($)</th>
+            <th>Horas de Colheita</th>
+            <th>Custo por Unidade ($)</th>
+            <th>Venda por Unidade ($)</th>
+            <th>Lucro por Unidade ($)</th>
+            <th>Lucro Total ($)</th>
+            <th>Lucro por Hora ($)</th>
+            <th>Preço por Unidade ($)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Linhas serão geradas dinamicamente aqui -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // Dados do Array (simulação)
+    const dados = [
+      ["Potato", 200, 3, 63, 1, 90],
+  ["Corn", 3000, 7.5, 987, 15, 205],
+  ["Wheat", 1200, 6, 378, 6, 158],
+  ["Carrot", 400, 3, 147, 2, 126],
+  ["Grape", 1200, 3, 378, 6, 325],
+  ["Blueberry", 1200, 12, 378, 6, 90],
+  ["Cabbage", 1200, 3, 378, 6, 367],
+  ["Pepper", 5700, 12, 1890, 28.5, 190],
+  ["Onion", 1800, 4.5, 588, 9, 258],
+  ["Strawberry", 1500, 9, 504, 7.5, 100],
+  ["Beans", 3000, 12, 987, 15, 129],
+  ["Pumpkin", 4800, 3, 1575, 24, 525],
+  ["Watermelon", 6000, 3, 1890, 30, 425],
+  ["Pea", 3900, 12, 1260, 19.5, 139],
+  ["Moonberry", 4200, 6, 1386, 21, 265],
+  ["Garlic", 3300, 9, 1050, 16.5, 375],
+  ["Broccoli", 3000, 4.5, 987, 15, 410],
+  ["Sunberry", 6000, 6, 1890, 30, 1000]
+    ];
+
+    // Função para gerar a tabela com base nos dados do Array
+    function gerarTabela() {
+      const tbody = document.querySelector("#cultivos tbody");
+      tbody.innerHTML = ""; // Limpa o conteúdo atual da tabela
+
+      dados.forEach((cultivo, index) => {
+        const linha = document.createElement("tr");
+        linha.innerHTML = `
+          <td>${cultivo[0]}</td>
+          <td>${cultivo[1]}</td>
+          <td>${cultivo[2]}</td>
+          <td>${cultivo[3]}</td>
+          <td>${cultivo[4]}</td>
+          <td id="custo-unidade-${index}"></td>
+          <td>${cultivo[5]}</td>
+          <td id="lucro-unidade-${index}"></td>
+          <td id="lucro-total-${index}"></td>
+          <td id="lucro-hora-${index}"></td>
+          <td><input type="number" class="form-control" value="${cultivo[5]}" oninput="atualizarLucro(${index}, this.value)"></td>
+        `;
+        tbody.appendChild(linha);
+        // Calcula os lucros para cada linha
+        atualizarLucro(index, cultivo[5]);
+      });
+    }
+
+    // Função para atualizar os lucros com base no preço por unidade
+    function atualizarLucro(index, novoPreco) {
+      const preco = parseFloat(novoPreco);
+      const custo = dados[index][3];
+      const unidades = dados[index][2];
+      const horasColheita = dados[index][4];
+      const custoPorUnidade = custo / unidades;
+      const vendaPorUnidade = preco;
+      const lucroPorUnidade = vendaPorUnidade - custoPorUnidade;
+      const lucroTotal = lucroPorUnidade * unidades;
+      const lucroPorHora = lucroTotal / horasColheita;
+
+      document.getElementById(`custo-unidade-${index}`).textContent = custoPorUnidade.toFixed(2);
+      document.getElementById(`lucro-unidade-${index}`).textContent = lucroPorUnidade.toFixed(2);
+      document.getElementById(`lucro-total-${index}`).textContent = lucroTotal.toFixed(2);
+      document.getElementById(`lucro-hora-${index}`).textContent = lucroPorHora.toFixed(2);
+    }
+
+    // Gerar a tabela ao carregar a página
+    window.onload = gerarTabela;
+  </script>
+</body>
+</html>
