@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mapa Personalizado com Marcadores</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"></script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        #map {
+            height: 900px;
+            width: 1600px;
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        // Inicialização do mapa com CRS simples para imagens planas
+        var map = L.map('map', {
+            minZoom: 1,
+            maxZoom: 4,
+            center: [0, 0],
+            zoom: 1,
+            crs: L.CRS.Simple
+        });
+
+        // Dimensões da sua imagem em pixels
+        var w = 1600, h = 900;
+
+        // Calcula os cantos do mapa com base nas dimensões da imagem
+        var southWest = map.unproject([0, h], map.getMaxZoom()-1);
+        var northEast = map.unproject([w, 0], map.getMaxZoom()-1);
+        var bounds = new L.LatLngBounds(southWest, northEast);
+
+        // Adiciona a imagem como uma camada de sobreposição
+        L.imageOverlay('https://wn-cdn.ravendawn.online/files/Map_1_11_2024.jpg', bounds).addTo(map);
+
+        // Define os limites do mapa para a extensão da sua imagem
+        map.setMaxBounds(bounds);
+
+        // Suponha que eventos seja um array com as coordenadas dos eventos
+        fetch('events.json')
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(eventos) {
+                eventos.forEach(function(evento) {
+                    var marker = L.marker([evento.latitude, evento.longitude]).addTo(map);
+                    marker.bindPopup(evento.nome).openPopup();
+                });
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,642 @@
+[
+	{
+		"name": "Mounted Vengeance",
+		"pos": {
+			"z": 7,
+			"y": 5316,
+			"x": 5442
+		}
+	},
+	{
+		"name": "Thirsty Bandits",
+		"pos": {
+			"z": 7,
+			"y": 5076,
+			"x": 5236
+		}
+	},
+	{
+		"name": "Flower Power",
+		"pos": {
+			"z": 7,
+			"y": 4988,
+			"x": 5160
+		}
+	},
+	{
+		"name": "For The Love of Demons",
+		"pos": {
+			"z": 7,
+			"y": 5043,
+			"x": 5334
+		}
+	},
+	{
+		"name": "A Troll's Favorite Food",
+		"pos": {
+			"z": 7,
+			"y": 5153,
+			"x": 5491
+		}
+	},
+	{
+		"name": "Goblins Attack!",
+		"pos": {
+			"z": 7,
+			"y": 4978,
+			"x": 5031
+		}
+	},
+	{
+		"name": "Killer Bees",
+		"pos": {
+			"z": 5,
+			"y": 4928,
+			"x": 4940
+		}
+	},
+	{
+		"name": "In The Spider's Web",
+		"pos": {
+			"z": 7,
+			"y": 4903,
+			"x": 5008
+		}
+	},
+	{
+		"name": "Souls of the Forest",
+		"pos": {
+			"z": 7,
+			"y": 4838,
+			"x": 5013
+		}
+	},
+	{
+		"name": "Trespassers Will Be Shot",
+		"pos": {
+			"z": 7,
+			"y": 4802,
+			"x": 4996
+		}
+	},
+	{
+		"name": "Open Waters",
+		"pos": {
+			"z": 7,
+			"y": 5068,
+			"x": 4343
+		}
+	},
+	{
+		"name": "Greedy Gliders",
+		"pos": {
+			"z": 7,
+			"y": 5102,
+			"x": 4768
+		}
+	},
+	{
+		"name": "Piss Drunk Patrons",
+		"pos": {
+			"z": 6,
+			"y": 5137,
+			"x": 3956
+		}
+	},
+	{
+		"name": "Raiders of the Wastes",
+		"pos": {
+			"z": 7,
+			"y": 5329,
+			"x": 5238
+		}
+	},
+	{
+		"name": "Dangerous Denizens",
+		"pos": {
+			"z": 7,
+			"y": 5338,
+			"x": 4996
+		}
+	},
+	{
+		"name": "Amphibious Assassins",
+		"pos": {
+			"z": 7,
+			"y": 5512,
+			"x": 5340
+		}
+	},
+	{
+		"name": "Windy Canyon Clash",
+		"pos": {
+			"z": 7,
+			"y": 5493,
+			"x": 5218
+		}
+	},
+	{
+		"name": "The Elderwood Grotto",
+		"pos": {
+			"z": 7,
+			"y": 5241,
+			"x": 5369
+		}
+	},
+	{
+		"name": "Up From the Deep",
+		"pos": {
+			"z": 7,
+			"y": 5146,
+			"x": 5496
+		}
+	},
+	{
+		"name": "Hidden Grounds",
+		"pos": {
+			"z": 7,
+			"y": 4921,
+			"x": 4919
+		}
+	},
+	{
+		"name": "The Dark Lighthouse",
+		"pos": {
+			"z": 7,
+			"y": 4964,
+			"x": 4981
+		}
+	},
+	{
+		"name": "Lit Beacons",
+		"pos": {
+			"z": 7,
+			"y": 4813,
+			"x": 5106
+		}
+	},
+	{
+		"name": "Never Enough Furs",
+		"pos": {
+			"z": 7,
+			"y": 4855,
+			"x": 4922
+		}
+	},
+	{
+		"name": "As Above So Below",
+		"pos": {
+			"z": 7,
+			"y": 4904,
+			"x": 5209
+		}
+	},
+	{
+		"name": "The Shroom Shaman",
+		"pos": {
+			"z": 7,
+			"y": 5063,
+			"x": 5269
+		}
+	},
+	{
+		"name": "The Astronomer's Prediction",
+		"pos": {
+			"z": 7,
+			"y": 5266,
+			"x": 5158
+		}
+	},
+	{
+		"name": "Hexs Heavy Price",
+		"pos": {
+			"z": 7,
+			"y": 5486,
+			"x": 5335
+		}
+	},
+	{
+		"name": "The Bone Carver",
+		"pos": {
+			"z": 7,
+			"y": 5550,
+			"x": 5207
+		}
+	},
+	{
+		"name": "She Sells Seashells",
+		"pos": {
+			"z": 7,
+			"y": 5474,
+			"x": 4874
+		}
+	},
+	{
+		"name": "Look Don't Touch",
+		"pos": {
+			"z": 7,
+			"y": 5030,
+			"x": 4738
+		}
+	},
+	{
+		"name": "Ghost of The Old Mariner",
+		"pos": {
+			"z": 7,
+			"y": 4907,
+			"x": 3983
+		}
+	},
+	{
+		"name": "The Murmuring Tree",
+		"pos": {
+			"z": 7,
+			"y": 5237,
+			"x": 5261
+		}
+	},
+	{
+		"name": "What Does The Fox Say",
+		"pos": {
+			"z": 7,
+			"y": 5461,
+			"x": 5261
+		}
+	},
+	{
+		"name": "Misty Waters",
+		"pos": {
+			"z": 7,
+			"y": 4995,
+			"x": 4652
+		}
+	},
+	{
+		"name": "Swarming Spread",
+		"pos": {
+			"z": 7,
+			"y": 5052,
+			"x": 3998
+		}
+	},
+	{
+		"name": "A Mushroom Cut In Half",
+		"pos": {
+			"z": 7,
+			"y": 5073,
+			"x": 5325
+		}
+	},
+	{
+		"name": "A Usual Day At The Workshop",
+		"pos": {
+			"z": 7,
+			"y": 5132,
+			"x": 4782
+		}
+	},
+	{
+		"name": "Hunters Under The Sunheat",
+		"pos": {
+			"z": 7,
+			"y": 5471,
+			"x": 5236
+		}
+	},
+	{
+		"name": "Man Corrupted Grounds",
+		"pos": {
+			"z": 7,
+			"y": 5119,
+			"x": 5261
+		}
+	},
+	{
+		"name": "Creepy Howls Under The Moon",
+		"pos": {
+			"z": 7,
+			"y": 4959,
+			"x": 5184
+		}
+	},
+	{
+		"name": "The Champion's Den",
+		"pos": {
+			"z": 2,
+			"y": 5524,
+			"x": 4998
+		}
+	},
+	{
+		"name": "Night Sacrifice",
+		"pos": {
+			"z": 4,
+			"y": 5566,
+			"x": 4376
+		}
+	},
+	{
+		"name": "The Hoarder's Stash",
+		"pos": {
+			"z": 6,
+			"y": 5876,
+			"x": 4282
+		}
+	},
+	{
+		"name": "Fishy Secrets",
+		"pos": {
+			"z": 10,
+			"y": 5828,
+			"x": 4239
+		}
+	},
+	{
+		"name": "Starving Crawlers",
+		"pos": {
+			"z": 7,
+			"y": 4295,
+			"x": 4490
+		}
+	},
+	{
+		"name": "Frolls Over the Bridge",
+		"pos": {
+			"z": 5,
+			"y": 4344,
+			"x": 4090
+		}
+	},
+	{
+		"name": "Picky Eaters",
+		"pos": {
+			"z": 7,
+			"y": 4483,
+			"x": 4236
+		}
+	},
+	{
+		"name": "Aggressive Preservation",
+		"pos": {
+			"z": 7,
+			"y": 4484,
+			"x": 4236
+		}
+	},
+	{
+		"name": "Magical Pheromones",
+		"pos": {
+			"z": 7,
+			"y": 4293,
+			"x": 4174
+		}
+	},
+	{
+		"name": "Twisted Hybridization",
+		"pos": {
+			"z": 7,
+			"y": 4294,
+			"x": 4174
+		}
+	},
+	{
+		"name": "Risky Business",
+		"pos": {
+			"z": 7,
+			"y": 5511,
+			"x": 4071
+		}
+	},
+	{
+		"name": "Praise the Sun",
+		"pos": {
+			"z": 6,
+			"y": 5647,
+			"x": 4388
+		}
+	},
+	{
+		"name": "Undead Harvesting",
+		"pos": {
+			"z": 9,
+			"y": 4243,
+			"x": 4823
+		}
+	},
+	{
+		"name": "Ice Cold Enemies",
+		"pos": {
+			"z": 7,
+			"y": 4202,
+			"x": 4772
+		}
+	},
+	{
+		"name": "Lady of the Snow",
+		"pos": {
+			"z": 7,
+			"y": 4305,
+			"x": 4510
+		}
+	},
+	{
+		"name": "Extremist Naturalists",
+		"pos": {
+			"z": 7,
+			"y": 5568,
+			"x": 4113
+		}
+	},
+	{
+		"name": "Humanity Lost",
+		"pos": {
+			"z": 7,
+			"y": 4761,
+			"x": 5479
+		}
+	},
+	{
+		"name": "Tool Appropriation",
+		"pos": {
+			"z": 7,
+			"y": 4403,
+			"x": 4248
+		}
+	},
+	{
+		"name": "Foreigner's Plague",
+		"pos": {
+			"z": 7,
+			"y": 4353,
+			"x": 4614
+		}
+	},
+	{
+		"name": "Overrun Hideout",
+		"pos": {
+			"z": 7,
+			"y": 5439,
+			"x": 4946
+		}
+	},
+	{
+		"name": "The Red Count",
+		"pos": {
+			"z": 3,
+			"y": 4735,
+			"x": 5416
+		}
+	},
+	{
+		"name": "Toxicity",
+		"pos": {
+			"z": 7,
+			"y": 4777,
+			"x": 5823
+		}
+	},
+	{
+		"name": "Chain Reaction",
+		"pos": {
+			"z": 7,
+			"y": 4938,
+			"x": 5703
+		}
+	},
+	{
+		"name": "No Rest for the Wicked",
+		"pos": {
+			"z": 7,
+			"y": 5032,
+			"x": 5481
+		}
+	},
+	{
+		"name": "The Muddy Catch",
+		"pos": {
+			"z": 7,
+			"y": 4896,
+			"x": 5759
+		}
+	},
+	{
+		"name": "A Bad Hookup",
+		"pos": {
+			"z": 7,
+			"y": 4897,
+			"x": 5759
+		}
+	},
+	{
+		"name": "Reaping Harvest",
+		"pos": {
+			"z": 7,
+			"y": 5185,
+			"x": 5841
+		}
+	},
+	{
+		"name": "Daughters of Slaughter I",
+		"pos": {
+			"z": 9,
+			"y": 4724,
+			"x": 5729
+		}
+	},
+	{
+		"name": "Daughters of Slaughter II",
+		"pos": {
+			"z": 9,
+			"y": 4781,
+			"x": 5638
+		}
+	},
+	{
+		"name": "Daughters of Slaughter III",
+		"pos": {
+			"z": 9,
+			"y": 4982,
+			"x": 5710
+		}
+	},
+	{
+		"name": "The Corvine Bride",
+		"pos": {
+			"z": 10,
+			"y": 4810,
+			"x": 5795
+		}
+	},
+	{
+		"name": "Drunken Ritual",
+		"pos": {
+			"z": 7,
+			"y": 5060,
+			"x": 5212
+		}
+	},
+	{
+		"name": "Fear the Reaper",
+		"pos": {
+			"z": 7,
+			"y": 4899,
+			"x": 5707
+		}
+	},
+	{
+		"name": "Turmoil in Orkwatch",
+		"pos": {
+			"z": 7,
+			"y": 5523,
+			"x": 5489
+		}
+	},
+	{
+		"name": "An Escort to Truce",
+		"pos": {
+			"z": 7,
+			"y": 5155,
+			"x": 5825
+		}
+	},
+	{
+		"name": "Orcultist Society",
+		"pos": {
+			"z": 7,
+			"y": 5432,
+			"x": 5830
+		}
+	},
+	{
+		"name": "An Escort to Bastion",
+		"pos": {
+			"z": 7,
+			"y": 5182,
+			"x": 5792
+		}
+	},
+	{
+		"name": "An Escort to Defiance",
+		"pos": {
+			"z": 7,
+			"y": 5248,
+			"x": 5771
+		}
+	},
+	{
+		"name": "Masked Onslaught",
+		"pos": {
+			"z": 7,
+			"y": 5242,
+			"x": 5752
+		}
+	},
+	{
+		"name": "Just a Drop",
+		"pos": {
+			"z": 7,
+			"y": 5316,
+			"x": 5675
+		}
+	}
+]
