@@ -45,16 +45,13 @@
         // Define os limites do mapa para a extensão da sua imagem
         map.setMaxBounds(bounds);
 
-        // Suponha que eventos seja um array com as coordenadas dos eventos
-        fetch('events.json')
+        // Carrega o GeoJSON a partir do arquivo events.geojson
+        fetch('events.geojson')
             .then(function(response) {
                 return response.json();
             })
-            .then(function(eventos) {
-                eventos.forEach(function(evento) {
-                    var marker = L.marker([evento.latitude, evento.longitude]).addTo(map);
-                    marker.bindPopup(evento.nome).openPopup();
-                });
+            .then(function(geojson) {
+                L.geoJSON(geojson).addTo(map);
             });
     </script>
 </body>
