@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,10 +8,12 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css">
     <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"></script>
     <style>
-        html, body {
+        html,
+        body {
             height: 100%;
             margin: 0;
         }
+
         #map {
             height: 900px;
             width: 1600px;
@@ -19,40 +22,871 @@
         }
     </style>
 </head>
+
 <body>
     <div id="map"></div>
     <script>
-        // Inicialização do mapa com CRS simples para imagens planas
-        var map = L.map('map', {
-            minZoom: 1,
-            maxZoom: 4,
-            center: [0, 0],
-            zoom: 1,
-            crs: L.CRS.Simple
-        });
-
-        // Dimensões da sua imagem em pixels
         var w = 1600, h = 900;
 
+        var map = L.map('map', {
+            minZoom: 0, // Permitindo zoom para fora até o nível 0
+            maxZoom: 5, // Limitando o zoom para dentro até o nível 5
+            center: [0, 0],
+            zoom: 4,
+            crs: L.CRS.Simple
+        });
         // Calcula os cantos do mapa com base nas dimensões da imagem
-        var southWest = map.unproject([0, h], map.getMaxZoom()-1);
-        var northEast = map.unproject([w, 0], map.getMaxZoom()-1);
+        var southWest = map.unproject([0, h], map.getMaxZoom() - 1);
+        var northEast = map.unproject([w, 0], map.getMaxZoom() - 1);
         var bounds = new L.LatLngBounds(southWest, northEast);
 
         // Adiciona a imagem como uma camada de sobreposição
-        L.imageOverlay('https://wn-cdn.ravendawn.online/files/Map_1_11_2024.jpg', bounds).addTo(map);
+        L.imageOverlay('mapa.jpg', bounds).addTo(map);
 
         // Define os limites do mapa para a extensão da sua imagem
         map.setMaxBounds(bounds);
 
-        // Carrega o GeoJSON a partir do arquivo events.geojson
-        fetch('events.geojson')
-            .then(function(response) {
-                return response.json();
-            })
-            .then(function(geojson) {
-                L.geoJSON(geojson).addTo(map);
-            });
+        function convertCoordinates(x, y) {
+            // Ajuste os fatores de escala conforme necessário
+            var escala1 = 9065;
+            var escala2 = 9535;
+            var xFactor = w / escala1; // Considerando que a largura total do mapa representa 180 graus de longitude
+            var yFactor = h / escala2; // Considerando que a altura total do mapa representa 90 graus de latitude
+
+            // Converte as coordenadas x, y para latitude e longitude
+            var lat = (h / 2) - (y * yFactor);
+            var lng = (x * xFactor) - (w / 2);
+
+            // Retorna as coordenadas no sistema do Leaflet
+            return [lat, lng]; // Leaflet usa a ordem [lat, lng]
+        }
+
+        
+        var geojsonData = {
+            "type": "FeatureCollection",
+            "features": [
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Mounted Vengeance"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5442, 5316]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Thirsty Bandits"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5236, 5076]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Flower Power"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5160, 4988]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "For The Love of Demons"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5334, 5043]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "A Troll's Favorite Food"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5491, 5153]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Goblins Attack!"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5031, 4978]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Killer Bees"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4940, 4928]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "In The Spider's Web"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5008, 4903]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Souls of the Forest"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5013, 4838]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Trespassers Will Be Shot"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4996, 4802]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Open Waters"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4343, 5068]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Greedy Gliders"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4768, 5102]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Piss Drunk Patrons"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [3956, 5137]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Raiders of the Wastes"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5238, 5329]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Dangerous Denizens"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4996, 5338]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Amphibious Assassins"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5340, 5512]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Windy Canyon Clash"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5218, 5493]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "The Elderwood Grotto"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5369, 5241]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Up From the Deep"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5496, 5146]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Hidden Grounds"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4919, 4921]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "The Dark Lighthouse"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4981, 4964]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Lit Beacons"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5106, 4813]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Never Enough Furs"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4922, 4855]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "As Above So Below"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5209, 4904]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "The Shroom Shaman"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5269, 5063]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "The Astronomer's Prediction"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5158, 5266]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Hexs Heavy Price"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5335, 5486]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "The Bone Carver"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5207, 5550]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "She Sells Seashells"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4874, 5474]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Look Don't Touch"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4738, 5030]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Ghost of The Old Mariner"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [3983, 4907]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "The Murmuring Tree"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5261, 5237]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "What Does The Fox Say"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5261, 5461]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Misty Waters"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4652, 4995]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Swarming Spread"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [3998, 5052]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "A Mushroom Cut In Half"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5325, 5073]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "A Usual Day At The Workshop"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4782, 5132]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Hunters Under The Sunheat"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5236, 5471]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Man Corrupted Grounds"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5261, 5119]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Creepy Howls Under The Moon"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5184, 4959]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "The Champion's Den"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4998, 5524]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Night Sacrifice"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4376, 5566]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "The Hoarder's Stash"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4282, 5876]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Fishy Secrets"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4239, 5828]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Starving Crawlers"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4490, 4295]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Frolls Over the Bridge"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4090, 4344]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Picky Eaters"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4236, 4483]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Aggressive Preservation"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4236, 4484]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Magical Pheromones"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4174, 4293]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Twisted Hybridization"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4174, 4294]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Risky Business"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4071, 5511]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Praise the Sun"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4388, 5647]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Undead Harvesting"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4823, 4243]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Ice Cold Enemies"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4772, 4202]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Lady of the Snow"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4510, 4305]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Extremist Naturalists"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4113, 5568]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Humanity Lost"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5479, 4761]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Tool Appropriation"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4248, 4403]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Foreigner's Plague"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4614, 4353]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Overrun Hideout"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [4946, 5439]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "The Red Count"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5416, 4735]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Toxicity"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5823, 4777]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Chain Reaction"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5703, 4938]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "No Rest for the Wicked"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5481, 5032]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "The Muddy Catch"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5759, 4896]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "A Bad Hookup"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5759, 4897]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Reaping Harvest"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5841, 5185]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Daughters of Slaughter I"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5729, 4724]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Daughters of Slaughter II"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5638, 4781]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Daughters of Slaughter III"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5710, 4982]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "The Corvine Bride"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5795, 4810]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Drunken Ritual"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5212, 5060]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Fear the Reaper"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5707, 4899]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Turmoil in Orkwatch"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5489, 5523]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "An Escort to Truce"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5825, 5155]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Orcultist Society"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5830, 5432]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "An Escort to Bastion"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5792, 5182]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "An Escort to Defiance"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5771, 5248]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Masked Onslaught"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5752, 5242]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "name": "Just a Drop"
+                    },
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [5675, 5316]
+                    }
+                }
+            ]
+        };
+
+        // Adiciona os dados GeoJSON ao mapa
+        L.geoJSON(geojsonData, {
+            onEachFeature: function (feature, layer) {
+                // if (feature.properties.name == 'Greedy Gliders') {
+                //     let convertedCoords = convertCoordinates(feature.geometry.coordinates[0], feature.geometry.coordinates[1]);
+                //     let marker = L.marker(convertedCoords).addTo(map);
+                //     marker.bindPopup(feature.properties.name).openPopup()
+                // }
+                if (feature.properties && feature.properties.name) {
+                    // Convertendo as coordenadas usando a função convertCoordinates
+                    var convertedCoords = convertCoordinates(feature.geometry.coordinates[0], feature.geometry.coordinates[1]);
+                    console.log(convertedCoords);
+                    let marker = L.marker(convertedCoords).addTo(map);
+                    marker.bindPopup(feature.properties.name).openPopup();
+                }
+            }
+        });
+        
     </script>
 </body>
+
 </html>
